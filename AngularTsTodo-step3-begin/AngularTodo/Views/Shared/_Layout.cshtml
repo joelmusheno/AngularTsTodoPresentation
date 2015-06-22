@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="todo">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+
+    <div class="container body-content">
+        @RenderBody()
+        
+        <div ng-controller="todoController">
+            <h1>Todos</h1>
+            <div class="form-group">
+                <ul class="list-unstyled" ng-repeat="t in todos">
+                    <li>{{t.Description}}</li>
+                </ul>
+            </div>
+            <form name="todoForm">
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="todoDescription" ng-model="todoDescriptionAdd"/>
+                </div>
+
+                <input type="button" class="btn btn-default" name="btnAdd" value="Add Todo" ng-click="addTodo()" /> 
+            </form>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angular-ui-bootstrap")
+
+    @Scripts.Render("~/bundles/todo")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
